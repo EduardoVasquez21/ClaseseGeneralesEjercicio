@@ -62,6 +62,7 @@ public class FrmConsultaBD extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtNota = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TbInscritos = new javax.swing.JTable();
@@ -192,6 +193,8 @@ public class FrmConsultaBD extends javax.swing.JFrame {
 
         jLabel5.setText("Materias");
 
+        jLabel6.setText("Nota");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -199,6 +202,7 @@ public class FrmConsultaBD extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jButton4)
@@ -206,7 +210,7 @@ public class FrmConsultaBD extends javax.swing.JFrame {
                         .addComponent(cbMaterias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtNota)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +223,9 @@ public class FrmConsultaBD extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(jButton4)
@@ -302,19 +308,33 @@ public class FrmConsultaBD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-      
+      Nota not=new Nota();
+      Notas nDaop = new Notas();
         // TODO add your handling code here:
-        int id =Valuemeber[cbEstu.getSelectedIndex()];
-        JOptionPane.showMessageDialog(null, id);
+        int id = Valuemeber[cbEstu.getSelectedIndex()];
+        int id2 =Valumember[cbMaterias.getSelectedIndex()];
+        
+                        not.setNota(txtNota.getText());
+                not.setIddMateria(Valuemeber[cbMaterias.getSelectedIndex()]);
+                not.setIddEstudiante(Valumember[cbEstu.getSelectedIndex()]);
+                //String password2 = String.valueOf(txtPassword2.getPassword());
+
+
+                nDaop.AddNota(not);
+//        JOptionPane.showMessageDialog(null, id);
+//        
+//JOptionPane.showMessageDialog(null, id2);
+
+               
     }//GEN-LAST:event_jButton4ActionPerformed
 
         public void carga(){
-   
-        
+  
     }
      
      int Valuemeber[];
-     int Valuemember2[];
+    public int Valumember[];
+     
     public void cargar() {
          //MostrarNotas,Alumnos,Materias
             String titulos [] = {"NOMBRE","NOMBREMATERIA","NOTAS"};
@@ -343,84 +363,84 @@ public class FrmConsultaBD extends javax.swing.JFrame {
         
         //Estudiantes
         
-//        String titulosEs[] = {"NOMBRE",  "APELLIDO"};
-//        DefaultTableModel dfEs = new DefaultTableModel(null, titulosEs);
-//        Estudiantes Estu = new Estudiantes();
-//        String filaEs[] = new String[3];
-//        for (var iteracion : Estu.ListadoEstudiantes()) {
-//            ///  Estudiante estBucle = (Estudiante) iterador.next();
-//            filaEs[0] = iteracion.getNombre();
-//            filaEs[1] = iteracion.getApellido();
-//            
-//
-//            dfEs.addRow(filaEs);
-//        }
-//        tbEstu.setModel(dfEs);
-//        
-//        
-//        
-//        ArrayList<Estudiante> Estudiante = Estu.ListadoEstudiantes();
-//            Iterator iterator = Estudiante.iterator();
-//            DefaultComboBoxModel DefaultComboBoxModel = new DefaultComboBoxModel();
-//            DefaultComboBoxModel.removeAllElements();
-//            cbEstu.removeAll();
-//            String filas[] = new String[3];
-//            
-//             Valuemeber= new int[Estudiante.size()];
-//           
-//            int intContador = 0;
-//            
-//            while (iterator.hasNext()) {
-//                Estudiante estudianteCls;
-//                estudianteCls = (Estudiante) iterator.next();
-//                Valuemeber[intContador] = estudianteCls.getIdEstudiante();
-//                 
-//                DefaultComboBoxModel.addElement(estudianteCls.getNombre());
-//                intContador++;
-//           
-//            }
-//            cbEstu.setModel(DefaultComboBoxModel);
-//            
+        String titulosEs[] = {"NOMBRE",  "APELLIDO"};
+        DefaultTableModel dfEs = new DefaultTableModel(null, titulosEs);
+        Estudiantes Estu = new Estudiantes();
+        String filaEs[] = new String[3];
+        for (var iteracion : Estu.ListadoEstudiantes()) {
+            ///  Estudiante estBucle = (Estudiante) iterador.next();
+            filaEs[0] = iteracion.getNombre();
+            filaEs[1] = iteracion.getApellido();
+            
+
+            dfEs.addRow(filaEs);
+        }
+        tbEstu.setModel(dfEs);
+        
+        
+        
+        ArrayList<Estudiante> Estudiante = Estu.ListadoEstudiantes();
+            Iterator iterator = Estudiante.iterator();
+            DefaultComboBoxModel DefaultComboBoxModel = new DefaultComboBoxModel();
+            DefaultComboBoxModel.removeAllElements();
+            cbEstu.removeAll();
+            String filas[] = new String[3];
+            
+             Valuemeber= new int[Estudiante.size()];
+           
+            int intContador = 0;
+            
+            while (iterator.hasNext()) {
+                Estudiante estudianteCls;
+                estudianteCls = (Estudiante) iterator.next();
+                Valuemeber[intContador] = estudianteCls.getIdEstudiante();
+                 
+                DefaultComboBoxModel.addElement(estudianteCls.getNombre());
+                intContador++;
+           
+            }
+            cbEstu.setModel(DefaultComboBoxModel);
+            
             //Materias
-//            
+            
 //                    String titulosMt[] = {"MATERIA"};
 //        DefaultTableModel dfMt = new DefaultTableModel(null, titulosMt);
 //        Materias matr = new Materias();
 //        String filaMt[] = new String[3];
 //        for (var iteracion : matr.ListaMateria()) {
 //            ///  Estudiante estBucle = (Estudiante) iterador.next();
-//            filaEs[0] = iteracion.getNombreMateria();
+//            filaMt[0] = iteracion.getNombreMateria();
 //
 //            
 //
-//            dfEs.addRow(filaEs);
+//            dfMt.addRow(filaMt);
 //        }
-//        TbInscritos.setModel(dfEs);
-//        
-//        
-//            
-//                    ArrayList<Materia> Materia = matr.ListaMateria();
-//            Iterator iterador = Materia.iterator();
-//            DefaultComboBoxModel DefaulltComboBoxModel = new DefaultComboBoxModel();
-//            DefaultComboBoxModel.removeAllElements();
-//            cbMaterias.removeAll();
-//            String filass[] = new String[2];
-//            
-//             Valuemember2= new int[Materia.size()];
-//           
-//            int intContadorM = 0;
-//            
-//            while (iterator.hasNext()) {
-//                Materia MateriaCls;
-//                MateriaCls = (Materia) iterator.next();
-//                Valuemember2[intContadorM] = MateriaCls.getIdMateria();
-//                 
-//                DefaultComboBoxModel.addElement(MateriaCls.getNombreMateria());
-//                intContadorM++;
-//           
-//            }
-//            cbMaterias.setModel(DefaultComboBoxModel);
-//        
+//        TbInscritos.setModel(dfMt);
+        
+        Materias matr = new Materias();
+            
+                    ArrayList<Materia> Materia = matr.ListaMateria();
+            Iterator iterador = Materia.iterator();
+            DefaultComboBoxModel DefaulltComboBoxModel = new DefaultComboBoxModel();
+            DefaulltComboBoxModel.removeAllElements();
+            cbMaterias.removeAll();
+            String filass[] = new String[2];
+            
+             Valumember= new int[Materia.size()];
+           
+            int intContadorM = 0;
+            
+            while (iterador.hasNext()) {
+                Materia MateriaCls;
+                MateriaCls = (Materia) iterador.next();
+                Valumember[intContadorM] = MateriaCls.getIdMateria();
+                 
+                DefaulltComboBoxModel.addElement(MateriaCls.getNombreMateria());
+                intContadorM++;
+           
+            }
+            cbMaterias.setModel(DefaulltComboBoxModel);
+        
     }
     /**
      * @param args the command line arguments
@@ -471,6 +491,7 @@ public class FrmConsultaBD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

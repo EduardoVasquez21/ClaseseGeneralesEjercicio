@@ -11,7 +11,9 @@ import com.william.BD.ConexionAMYSQL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -76,6 +78,23 @@ public class Notas {
         return listado;
 
     }
+     
+     
+         public void AddNota(Nota not){
+    
+        try {
+            CallableStatement cb = conexion.prepareCall("{call SP_I_NOTA(?,?,?)}");
+            cb.setString("PNota", not.getNota());
+            cb.setInt("PIdMateria", not.getIddMateria());
+            cb.setInt("PIdEstudiante", not.getIddEstudiante());
+
+            cb.execute();
+            
+            JOptionPane.showMessageDialog(null, "Nota agregada","Mensje sistems",1);
+        } catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error"+ex);
+            
+        }}
 //    public void ex(){
 //    
 //    String inicio = null;

@@ -8,9 +8,37 @@ package Entidades;
  *
  * @author William
  */
-public class Nota extends Estudiante {
+public class Nota  {
     String nota;
+    int iddMateria;
+    int iddEstudiante;
+
+    public Nota() {
+    }
+
+    public Nota(String nota, int iddMateria, int iddEstudiante) {
+        this.nota = nota;
+        this.iddMateria = iddMateria;
+        this.iddEstudiante = iddEstudiante;
+    }
     
+    
+
+    public int getIddMateria() {
+        return iddMateria;
+    }
+
+    public void setIddMateria(int iddMateria) {
+        this.iddMateria = iddMateria;
+    }
+
+    public int getIddEstudiante() {
+        return iddEstudiante;
+    }
+
+    public void setIddEstudiante(int iddEstudiante) {
+        this.iddEstudiante = iddEstudiante;
+    }
     
     
     public String getNota() {
